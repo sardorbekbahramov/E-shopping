@@ -139,7 +139,9 @@
     border: 1px solid gray;
     margin-right: 8px;
     border-radius: 8px;
+    cursor: pointer;
 }
+
 .header .last_header .nav ul li .link {
     color: #fff;
     font-weight: 600;
