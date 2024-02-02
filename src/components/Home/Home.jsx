@@ -1,14 +1,27 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { TbPlayerTrackNext } from "react-icons/tb";
-import { FaEye, FaHeart, FaFacebookF, FaTwitter, FaInstagram, FaYoutube  } from "react-icons/fa";
-import gift from "../../images/image/download.png";
-import imgTest from "../../images/image/T1.avif";
+import { FaEye, FaHeart, FaFacebookF, FaTwitter, FaInstagram, FaYoutube, FaShoppingCart  } from "react-icons/fa";
 import "./home.css";
 import {Link} from "react-router-dom";
 import Homeproducts from './Dproducts';
 
+import gift from "../../images/image/download.png";
+import imgTest from "../../images/image/T1.avif";
+import multiBanner1 from '../../images/image/Multi-Banner-1.avif';
+import multiBanner2 from '../../images/image/Multi-banner-2.avif';
+import multiBanner3 from '../../images/image/Multi-Banner-3.webp';
+import multiBanner4 from '../../images/image/Multi-banner-4.avif';
+import multiBanner5 from '../../images/image/Multi-Banner-5.webp';
+
+
 
 const Home = () => {
+    // Product category
+    const [newProduct, setNewProduct] = useState([]);
+    const [featuredProduct, setFeaturedProduct] = useState([]);
+    const [topProduct, setTopProduct] = useState([]);
+
+    // Tranding Products
     const [trendingProduct, setTrendingProduct] = useState(Homeproducts);
 
 //====== filter of home products ===================>
@@ -24,6 +37,32 @@ const Home = () => {
         setTrendingProduct(Homeproducts);
     }
 //====== filter of home products finished ===========>
+
+// ====== Product type page ========================>
+
+useEffect(()=>{
+    productcategory();
+}, []);
+const productcategory = ()=> {
+    // New Product
+    const newcategory = Homeproducts.filter((elType)=>{
+        return elType.type === 'new' 
+    })
+    setNewProduct(newcategory);
+
+    // Featured Product
+    const featuredcategory = Homeproducts.filter((elType)=>{
+        return elType.type === 'featured' 
+    })
+    setFeaturedProduct(featuredcategory);
+
+    //Top Product
+    const topcategory = Homeproducts.filter((elType)=>{
+        return elType.type === 'top' 
+    })
+    setTopProduct(topcategory);
+}
+// ====== Product type page  finished===============>
 
     return (
         <>
@@ -143,12 +182,124 @@ const Home = () => {
 
                     </div>
                 </div>
-
+                
                 <div className="banners">
                     <div className="container">
-                        
+                        <div className="left_box">
+                            <div className="box">
+                                <img src={multiBanner1} alt="multi-banner" />
+                            </div>
+                            <div className="box">
+                                <img src={multiBanner2} alt="multi-banner" />
+                            </div>
+                        </div>
+                        <div className="right_box">
+                            <div className="top">
+                                <img src={multiBanner3} alt="multi-banner-top" />
+                                <img src={multiBanner4} alt="multi-banner-top" />
+                            </div>
+
+                            <div className="bottom">
+                                <img src={multiBanner5} alt="multi-banner-bottom" />
+                            </div>
+                        </div>
                     </div>
                 </div>
+
+                <div className="product_type">
+                    <div className="container">
+                       <div className="box">
+                            <div className="header">
+                                <h2>New Products</h2>
+                            </div>
+                                {
+                                    newProduct.map((product)=>{
+                                        return(
+                                            <>
+                                                <div className="product_box">
+                                                    <div className="img_box">
+                                                        <img src={product.img} alt="product_img" />
+                                                    </div>
+                                                    <div className="detail">
+                                                        <h3>{product.name}</h3>
+                                                        <p>${product.price}</p>
+                                                        
+                                                        <div className="icon">
+                                                            <button><FaEye /></button>
+                                                            <button><FaHeart /></button>
+                                                            <button><FaShoppingCart /></button>
+                                                        </div>
+                                                    </div>
+                                                    
+                                                </div>
+                                            </>
+                                        )
+                                    })
+                                }
+                       </div>
+
+                       <div className="box">
+                            <div className="header">
+                                <h2>Featured Products</h2>
+                            </div>
+                                {
+                                    featuredProduct.map((product)=>{
+                                        return(
+                                            <>
+                                                <div className="product_box">
+                                                    <div className="img_box">
+                                                        <img src={product.img} alt="product_img" />
+                                                    </div>
+                                                    <div className="detail">
+                                                        <h3>{product.name}</h3>
+                                                        <p>${product.price}</p>
+
+                                                        <div className="icon">
+                                                            <button><FaEye /></button>
+                                                            <button><FaHeart /></button>
+                                                            <button><FaShoppingCart /></button>
+                                                        </div>
+                                                    </div>
+                                                    
+                                                </div>
+                                            </>
+                                        )
+                                    })
+                                }
+                       </div>
+
+                       <div className="box">
+                            <div className="header">
+                                <h2>Top Products</h2>
+                            </div>
+                                {
+                                    topProduct.map((product)=>{
+                                        return(
+                                            <>
+                                                <div className="product_box">
+                                                    <div className="img_box">
+                                                        <img src={product.img} alt="product_img" />
+                                                    </div>
+                                                    <div className="detail">
+                                                        <h3>{product.name}</h3>
+                                                        <p>${product.price}</p>
+
+                                                        <div className="icon">
+                                                            <button><FaEye /></button>
+                                                            <button><FaHeart /></button>
+                                                            <button><FaShoppingCart /></button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </>
+                                        )
+                                    })
+                                }
+                       </div>
+
+                    </div>
+                </div>
+                
             </div>
         </>
     );
