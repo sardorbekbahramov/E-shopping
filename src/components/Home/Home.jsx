@@ -15,16 +15,16 @@ import multiBanner5 from '../../images/image/Multi-Banner-5.webp';
 
 
 
-const Home = () => {
+const Home = ({addtocart}) => {
     // Product category
     const [newProduct, setNewProduct] = useState([]);
     const [featuredProduct, setFeaturedProduct] = useState([]);
     const [topProduct, setTopProduct] = useState([]);
 
+//====== filter of home products ===================>
     // Tranding Products
     const [trendingProduct, setTrendingProduct] = useState(Homeproducts);
 
-//====== filter of home products ===================>
     const filtercate = (type) => {
         const filterproduct = Homeproducts.filter((currEl)=>{
             return currEl.type === type;
@@ -83,7 +83,7 @@ const productcategory = ()=> {
                             <div className="header">
                                 <div className="heading">
                                     <img src={gift} alt="" />
-                                    <h2 onClick={allTrendingProducts} >trending products</h2>
+                                    <h2 onClick={allTrendingProducts} >All trending products</h2>
                                 </div>
                                 <div className="cate">
                                     <h3 onClick={()=>filtercate('new')}>New</ h3>
@@ -114,7 +114,7 @@ const productcategory = ()=> {
                                                         <div className="info">
                                                             <h3>{item.name}</h3>
                                                             <p>${item.price}</p>
-                                                            <button className='btn'>Add To Cart</button>
+                                                            <button onClick={()=>addtocart(item)} className='btn'>Add To Cart</button>
                                                         </div>
                                                     </div>
                                                 </>
@@ -157,6 +157,9 @@ const productcategory = ()=> {
                                         <p>join our malling list</p>
                                         <form>
                                             <input required type="email" placeholder='E-mail' autoComplete='off'/>
+                                            <div className="area">
+                                                <textarea id="text_area" name="text_area" placeholder='Enter your ideas here ...'></textarea>
+                                            </div>
                                             <div className="btn">
                                                 <button type='submit'>subscribe</button>
                                             </div>
@@ -223,11 +226,11 @@ const productcategory = ()=> {
                                                     <div className="detail">
                                                         <h3>{product.name}</h3>
                                                         <p>${product.price}</p>
-                                                        
+
                                                         <div className="icon">
                                                             <button><FaEye /></button>
                                                             <button><FaHeart /></button>
-                                                            <button><FaShoppingCart /></button>
+                                                            <button><FaShoppingCart onClick={()=>addtocart(product)}/></button>
                                                         </div>
                                                     </div>
                                                     
@@ -257,7 +260,7 @@ const productcategory = ()=> {
                                                         <div className="icon">
                                                             <button><FaEye /></button>
                                                             <button><FaHeart /></button>
-                                                            <button><FaShoppingCart /></button>
+                                                            <button><FaShoppingCart onClick={()=>addtocart(product)}/></button>
                                                         </div>
                                                     </div>
                                                     
@@ -287,7 +290,7 @@ const productcategory = ()=> {
                                                         <div className="icon">
                                                             <button><FaEye /></button>
                                                             <button><FaHeart /></button>
-                                                            <button><FaShoppingCart /></button>
+                                                            <button><FaShoppingCart onClick={()=>addtocart(product)}/></button>
                                                         </div>
                                                     </div>
                                                 </div>

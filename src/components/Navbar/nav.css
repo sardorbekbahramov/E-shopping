@@ -62,12 +62,24 @@
 }
 .header .mid_header .user {
     display: flex;
+    position: relative;
+}
+.header .mid_header .user .bell {
+    position: absolute;
+    top: 4px;
+    right: 40px;
+    color: #cd1e76;
+    font-size: 22px;
+    cursor: pointer;
 }
 .header .mid_header .user .icon {
     margin-right: 6px;
     font-size: 26px;
     padding: 2.5px 0 0 0;
+    color: #cd1e76;
+    cursor: pointer;
 }
+
 .header .mid_header .user .btn button {
     background: none;
     border: none;

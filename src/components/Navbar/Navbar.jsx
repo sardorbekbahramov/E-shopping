@@ -2,12 +2,12 @@ import React from 'react';
 import { useAuth0 } from "@auth0/auth0-react";
 import "./nav.css"
 import logoNav from '../../images/image/logo.webp'
-import { FaBars, FaSearch, FaRegUser } from "react-icons/fa";
+import { FaSearch, FaRegUser, FaBell } from "react-icons/fa";
 import { CiLogin, CiLogout } from "react-icons/ci";
 import { MdLocalShipping } from "react-icons/md";
 import {Link} from "react-router-dom";
 
-const Nav = () => {
+const Nav = ({search, setSearch, searchProducts}) => {
 
     const { loginWithRedirect } = useAuth0();
     const { logout } = useAuth0();
@@ -41,31 +41,37 @@ const Nav = () => {
                         <img src={logoNav} alt="navbar_logo" />
                     </div>
                     <div className="search_box">
-                        <input type="text" value={""} placeholder='Search products you need ...' />
-                        <button><FaSearch className='search_icon'/></button>
+                        <input type="text" value={search} onChange={(e)=> setSearch(e.target.value)} placeholder='Search products you need ...' />
+                        <button onClick={searchProducts}><FaSearch className='search_icon'/></button>
                     </div>
 
                     {
                         isAuthenticated ?
                         // Log out button
                         <div className="user">
+                            <div className="bell">
+                                <FaBell />
+                            </div>
                             <div className="icon">
-                                <CiLogout />
+                                <CiLogout  onClick={() => logout({ logoutParams: { returnTo: window.location.origin } })}/>
                             </div>
                 
-                        <div className="btn">
+                            {/* <div className="btn">
                                 <button onClick={() => logout({ logoutParams: { returnTo: window.location.origin } })} >Log out</button>
-                            </div>
+                            </div> */}
                         </div>
                         :
                         // Log in button
                         <div className="user">
+                            <div className="bell">
+                                <FaBell />
+                            </div>
                             <div className="icon">
-                                <CiLogin />
+                                <CiLogin onClick={() => loginWithRedirect()}/>
                             </div>
-                            <div className="btn">
-                                <button onClick={() => loginWithRedirect()} >Sign in</button>
-                            </div>
+                            {/* <div className="btn">
+                                <button onClick={() => loginWithRedirect()} >Log in</button>
+                            </div> */}
                         </div>
                     }
 

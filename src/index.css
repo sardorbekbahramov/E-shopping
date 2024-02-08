@@ -13,3 +13,7 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+*::selection{
+  background: #ffa3d1;
+  color: rgb(0, 115, 247);
+}

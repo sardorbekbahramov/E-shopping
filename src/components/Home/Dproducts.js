@@ -34,7 +34,7 @@ const Homeproducts = [
         name: 'XT 55 samsung',
         price: "126",
         img : img1,
-        cat: '',
+        cat: 'tv',
         type: 'new'
     },
     {
@@ -42,7 +42,7 @@ const Homeproducts = [
         name: 'smartphone',
         price: "66",
         img : img14,
-        cat: '',
+        cat: 'phone',
         type: 'new'
     },
     {
@@ -50,7 +50,7 @@ const Homeproducts = [
         name: 'smartwatch',
         price: "84",
         img : img3,
-        cat: '',
+        cat: 'watch',
         type: 'new'
     },
     {
@@ -58,7 +58,7 @@ const Homeproducts = [
         name: 'iphonex',
         price: "563",
         img : img15,
-        cat: '',
+        cat: 'phone',
         type: 'new'
     },
     {
@@ -66,7 +66,7 @@ const Homeproducts = [
         name: 'tv sputnic',
         price: "97",
         img : img21,
-        cat: '',
+        cat: 'electronics',
         type: 'new'
     },
     {
@@ -74,7 +74,7 @@ const Homeproducts = [
         name: 'audio mic200',
         price: "28",
         img : img4,
-        cat: '',
+        cat: 'speaker',
         type: 'new'
     },
     {
@@ -82,7 +82,7 @@ const Homeproducts = [
         name: 'power bag',
         price: "67",
         img : img16,
-        cat: '',
+        cat: 'electronics',
         type: 'new'
     },
     
@@ -91,7 +91,7 @@ const Homeproducts = [
         name: 'air pods',
         price: "50",
         img : img20,
-        cat: '',
+        cat: 'speaker',
         type: 'new'
     },
     {
@@ -99,7 +99,7 @@ const Homeproducts = [
         name: 'mac5 pro',
         price: "454",
         img : img2,
-        cat: '',
+        cat: 'laptop',
         type: 'new'
     },
     
@@ -109,7 +109,7 @@ const Homeproducts = [
         name: 'ipnonex black',
         price: "557",
         img : img18,
-        cat: '',
+        cat: 'phone',
         type: 'featured'
     },
     {
@@ -117,7 +117,7 @@ const Homeproducts = [
         name: 'cctv online',
         price: "212",
         img : img5,
-        cat: '',
+        cat: 'electronics',
         type: 'featured'
     },
     {
@@ -125,7 +125,7 @@ const Homeproducts = [
         name: 'xtech mi',
         price: "34",
         img : img6,
-        cat: '',
+        cat: 'phone',
         type: 'featured'
     },
 
@@ -134,64 +134,72 @@ const Homeproducts = [
         name: 'earpods',
         price: "421",
         img : img7,
-        cat: '',
+        cat: 'speaker',
+        type: 'featured'
+    },
+    {
+        id: 15,
+        name: 'air pods',
+        price: "150",
+        img : img20,
+        cat: 'speaker',
         type: 'featured'
     },
     // type: top
     {
-        id: 15,
+        id: 16,
         name: 'audio mic new',
         price: "32",
         img : img8,
-        cat: '',
-        type: 'top'
-    },
-    {
-        id: 16,
-        name: 'smartwatch',
-        price: "314",
-        img : img3,
-        cat: '',
+        cat: 'speaker',
         type: 'top'
     },
     {
         id: 17,
-        name: 'ipad apple',
-        price: "354",
-        img : img9,
-        cat: '',
+        name: 'smartwatch',
+        price: "314",
+        img : img3,
+        cat: 'watch',
         type: 'top'
     },
     {
         id: 18,
-        name: 'headphone',
-        price: "260",
-        img : img10,
-        cat: '',
+        name: 'ipad apple',
+        price: "354",
+        img : img9,
+        cat: 'laptop',
         type: 'top'
     },
     {
         id: 19,
-        name: 'refeere tv',
-        price: "126",
-        img : img11,
-        cat: '',
+        name: 'headphone',
+        price: "260",
+        img : img10,
+        cat: 'headphone',
         type: 'top'
     },
     {
         id: 20,
-        name: 'tv transru',
+        name: 'refeere tv',
         price: "126",
-        img : img23,
-        cat: '',
+        img : img11,
+        cat: 'tv',
         type: 'top'
     },
     {
         id: 21,
+        name: 'tv transru',
+        price: "126",
+        img : img23,
+        cat: 'tv',
+        type: 'top'
+    },
+    {
+        id: 22,
         name: 'power sm100',
         price: "126",
         img : img19,
-        cat: '', 
+        cat: 'electronics', 
         type: 'top'
     },
 ]
