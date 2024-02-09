@@ -37,6 +37,7 @@ function App() {
   }
  //============ Shop category filter finished ==============>
   const [cart, setCart] = useState([]);
+  const [showNotfc, setShowNotfc] = useState(false);
 
   const addtocart =(product)=> {
     const exist = cart.find((x)=>{
@@ -46,7 +47,10 @@ function App() {
       alert('not added, already exist it ...');
     }else{
       setCart([...cart, {...product, qty: 1}]);
-      alert('Product added to cart ...')
+      setShowNotfc(prev => !prev)
+      setTimeout(() => {
+        setShowNotfc(false);
+      }, 3000);
     }
   };
 
@@ -58,7 +62,7 @@ function App() {
     <>
       <BrowserRouter>
         <Nav search={search} setSearch={setSearch} searchProducts={searchProducts}/>
-        <Rout cart={cart} setCart={setCart} shop={shop} filterCategory={filterCategory} allCategory={allCategory} addtocart={addtocart}/>
+        <Rout showNotfc={showNotfc} cart={cart} setCart={setCart} shop={shop} filterCategory={filterCategory} allCategory={allCategory} addtocart={addtocart}/>
         <Footer/>
       </BrowserRouter>
     </>

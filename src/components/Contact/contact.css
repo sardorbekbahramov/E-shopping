@@ -1,0 +1,85 @@
+
+.contact {
+    padding: 20px 40px;
+    width: 100%;
+}
+.contact .container {
+    padding: 10xp 20px;
+    max-width: 100%;
+}
+.contact .container h2 {
+    text-transform: uppercase;
+    font-size: 22px;
+    letter-spacing: 1px;
+    font-weight: 600;
+    display: block;
+    padding: 5px 0 30px 0;
+    color: #232323;
+}
+.contact .container .form {
+    width: 500px;
+    background: #f6f6f6;
+    padding: 20px 30px;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    margin: 0 auto;
+    border-top: 1px solid #fed700;
+    border-radius: 5px;
+}
+
+.contact .container .form .box {
+    display: flex;
+    margin-top: 20px;   
+    justify-content: space-between;
+}
+.contact .container .form .box .lable h4 {
+    margin-left: 30px;
+    color: #232323;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.contact .container .form .box  .input input {
+    margin-right: 30px;
+    border: none;
+    outline: none;
+    border-bottom: 1px solid #8a8a8a;
+    background: none;
+    padding: 10px 20px;
+    width: 100%;
+}
+.contact .container .form .box  .input textarea {
+    border: none;
+    outline: none;
+    background: none;
+    border-bottom: 1px solid #8a8a8a;
+    resize: none;
+    width: 100%;
+    margin-top: 5px;
+}
+.contact .container .form .box  .input textarea::placeholder {
+    position: relative;
+    left: 18px;
+    top: 2px;
+    margin-left: 30px;
+    font-weight: 600;
+    color: #8a8a8a;
+}
+.contact .container .form button {
+    margin-top: 20px;
+    margin-left: 30px;
+    padding: 10px 30px;
+    color: #cd1e76;
+    background: #fed700;
+    border: 1px solid #fc5aab;
+    outline: none;
+    border-radius: 5px;
+    font-weight: 500;
+    cursor: pointer;
+}
+
+
+
+
+
+
+

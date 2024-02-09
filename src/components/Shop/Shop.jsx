@@ -8,11 +8,30 @@ import { IoIosPhonePortrait } from "react-icons/io";
 import { BsSmartwatch, BsSpeaker } from "react-icons/bs";
 import { FaHeadphonesSimple } from "react-icons/fa6";
 import { MdOutlineElectricBolt } from "react-icons/md";
+
+import notfcImg from '../../images/image/check-circle (1).svg'
 import "./shop.css"
 
-const Shop = ({shop, filterCategory, allCategory, addtocart}) => {
+const Shop = ({shop, filterCategory, allCategory, addtocart, showNotfc}) => {
     return (
         <>
+        {
+                showNotfc && (
+                    <>
+                    <div className="notification">
+                        <div className="notification__body">
+                            <img
+                            src={notfcImg}
+                            alt="Success"
+                            className="notification__icon"
+                            />
+                            The product has been added to cart! &#128640;
+                        </div>
+                        <div className="notification__progress"></div>
+                    </div>
+                    </>
+                )
+            }
             <div className="shop">
                 <h2><img src={newImg} alt="newlogo" /> Shop</h2>
                 <p>Home . shop</p>

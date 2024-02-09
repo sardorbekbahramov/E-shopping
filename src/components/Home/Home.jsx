@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { TbPlayerTrackNext } from "react-icons/tb";
-import { FaEye, FaHeart, FaFacebookF, FaTwitter, FaInstagram, FaYoutube, FaShoppingCart  } from "react-icons/fa";
+import { FaEye, FaHeart, FaFacebookF, FaTwitter, FaInstagram, FaYoutube, FaShoppingCart } from "react-icons/fa";
+import { IoMdClose } from "react-icons/io";
+import { FaStar } from "react-icons/fa";
 import "./home.css";
 import {Link} from "react-router-dom";
 import Homeproducts from './Dproducts';
@@ -12,10 +14,10 @@ import multiBanner2 from '../../images/image/Multi-banner-2.avif';
 import multiBanner3 from '../../images/image/Multi-Banner-3.webp';
 import multiBanner4 from '../../images/image/Multi-banner-4.avif';
 import multiBanner5 from '../../images/image/Multi-Banner-5.webp';
+import notfcImg from '../../images/image/check-circle (1).svg'
 
 
-
-const Home = ({addtocart}) => {
+const Home = ({addtocart, showNotfc}) => {
     // Product category
     const [newProduct, setNewProduct] = useState([]);
     const [featuredProduct, setFeaturedProduct] = useState([]);
@@ -63,9 +65,57 @@ const productcategory = ()=> {
     setTopProduct(topcategory);
 }
 // ====== Product type page  finished===============>
+//========== Toggle product detail =====================>
+    const [showDetail, setShowDetail] = useState(false)
+    const [detail, setDetail] = useState([])
+
+    const showdetailFunc = (item)=>{
+        const detaildata = ([{item}])
+        const productdetail = detaildata[0]['item']
+        setDetail(productdetail);
+        setShowDetail(true)
+        
+    }
+
+    const removedetailFunc = ()=>{
+        setShowDetail(false)
+    }
+//========== Toggle product detail finished ============>
+
 
     return (
         <>
+        {
+            showDetail ?
+            <>
+                <div className="product_details">
+                    <button className='close_btn' onClick={removedetailFunc}><IoMdClose /></button>
+                    <div className="container">
+                        <div className="img_box">
+                            <img src={detail.img} alt="" />
+                        </div>
+
+                        <div className="info">
+                            <h4>#{detail.cat}</h4>
+                            <h2>{detail.name}</h2>
+                            <div className="stars">
+                                <ul>
+                                    <li><FaStar /></li>
+                                    <li><FaStar /></li>
+                                    <li><FaStar /></li>
+                                    <li><FaStar /></li>
+                                    <li><FaStar /></li>
+                                </ul>
+                            </div>
+                            <h3>${detail.price}</h3>
+                            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit, lorem ipsum, dolor sit amet consectetur adipisicing elit. Fugit, cupiditate? Blanditiis adipisci enim laborum!</p>
+                            <button onClick={()=>addtocart(detail)} className='btn'>Add To Cart</button>
+                        </div>
+                    </div>
+                </div>
+            </>
+            : null   
+        }
             <div className="home">
                 <div className="top_banner">
                     <div className="content">
@@ -103,10 +153,10 @@ const productcategory = ()=> {
                                                             <img src={item.img} alt="productImg" />
                                                             <div className="icon">
                                                                 <div className="icon_box">
-                                                                    <FaEye />
-                                                                </div>
-                                                                <div className="icon_box">
                                                                     <FaHeart />
+                                                                </div>
+                                                                <div className="icon_box" onClick={()=>showdetailFunc(item)}>
+                                                                    <FaEye />
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -228,7 +278,7 @@ const productcategory = ()=> {
                                                         <p>${product.price}</p>
 
                                                         <div className="icon">
-                                                            <button><FaEye /></button>
+                                                            <button onClick={()=>showdetailFunc(product)}><FaEye /></button>
                                                             <button><FaHeart /></button>
                                                             <button><FaShoppingCart onClick={()=>addtocart(product)}/></button>
                                                         </div>
@@ -258,7 +308,7 @@ const productcategory = ()=> {
                                                         <p>${product.price}</p>
 
                                                         <div className="icon">
-                                                            <button><FaEye /></button>
+                                                            <button onClick={()=>showdetailFunc(product)}><FaEye /></button>
                                                             <button><FaHeart /></button>
                                                             <button><FaShoppingCart onClick={()=>addtocart(product)}/></button>
                                                         </div>
@@ -288,7 +338,7 @@ const productcategory = ()=> {
                                                         <p>${product.price}</p>
 
                                                         <div className="icon">
-                                                            <button><FaEye /></button>
+                                                            <button onClick={()=>showdetailFunc(product)}><FaEye /></button>
                                                             <button><FaHeart /></button>
                                                             <button><FaShoppingCart onClick={()=>addtocart(product)}/></button>
                                                         </div>
@@ -304,6 +354,24 @@ const productcategory = ()=> {
                 </div>
                 
             </div>
+
+            {
+                showNotfc && (
+                    <>
+                    <div className="notification">
+                        <div className="notification__body">
+                            <img
+                            src={notfcImg}
+                            alt="Success"
+                            className="notification__icon"
+                            />
+                            The product has been added to cart! &#128640;
+                        </div>
+                        <div className="notification__progress"></div>
+                    </div>
+                    </>
+                )
+            }
         </>
     );
 }
