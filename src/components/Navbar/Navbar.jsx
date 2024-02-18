@@ -1,13 +1,29 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { useAuth0 } from "@auth0/auth0-react";
 import "./nav.css"
 import logoNav from '../../images/image/logo.webp'
 import { FaSearch, FaRegUser, FaBell } from "react-icons/fa";
 import { CiLogin, CiLogout } from "react-icons/ci";
-import { MdLocalShipping } from "react-icons/md";
+import { MdLocalShipping, MdMenu } from "react-icons/md";
 import {Link} from "react-router-dom";
 
 const Nav = ({search, setSearch, searchProducts}) => {
+
+    const [innerWidth, setInnerWidth] = useState(window.innerWidth);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setInnerWidth(window.innerWidth);
+    };
+
+    window.addEventListener("resize", handleResize);
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
+
+    const [tog,setTog] = useState(false);
 
     const { loginWithRedirect } = useAuth0();
     const { logout } = useAuth0();
@@ -55,10 +71,11 @@ const Nav = ({search, setSearch, searchProducts}) => {
                             <div className="icon">
                                 <CiLogout  onClick={() => logout({ logoutParams: { returnTo: window.location.origin } })}/>
                             </div>
-                
+                            {/*  */}
                             {/* <div className="btn">
                                 <button onClick={() => logout({ logoutParams: { returnTo: window.location.origin } })} >Log out</button>
                             </div> */}
+                            {/*  */}
                         </div>
                         :
                         // Log in button
@@ -99,14 +116,14 @@ const Nav = ({search, setSearch, searchProducts}) => {
                                     <FaRegUser className='user_icon'/>
                                 </div>
                                 <div className="info_user">
-                                    <p className='user_info'>Please Login ...</p>
+                                    <p className='user_info'>{innerWidth>560&&"Please Login ..."}</p>
                                 </div>
                             </>
                         }
 
                     </div>
 
-                    <div className="nav">
+                    <div className={tog?"res_open":"nav"}>
                         <ul>
                             <li><Link to="/" className='link' >Home</Link></li>
                             <li><Link to="/shop" className='link' >Shop</Link></li>
@@ -114,6 +131,12 @@ const Nav = ({search, setSearch, searchProducts}) => {
                             <li><Link to="/about" className='link' >About</Link></li>
                             <li><Link to="/contact" className='link' >Contact</Link></li>
                         </ul>
+                    </div>
+
+                    <div className={tog?"overlay":""} onClick={()=>{setTog(false)}}></div>
+
+                    <div className='responsive'>
+                        <button onClick={()=>{setTog(!tog)}}><MdMenu/></button>
                     </div>
 
                     <div className="offer">

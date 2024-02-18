@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import shop_left from "../../images/image/shop_left.avif"
 import shop_banner from '../../images/image/shop_top.webp'
 import newImg from '../../images/image/new.png'
@@ -13,6 +13,19 @@ import notfcImg from '../../images/image/check-circle (1).svg'
 import "./shop.css"
 
 const Shop = ({shop, filterCategory, allCategory, addtocart, showNotfc}) => {
+    const [innerWidth, setInnerWidth] = useState(window.innerWidth);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setInnerWidth(window.innerWidth);
+    };
+
+    window.addEventListener("resize", handleResize);
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
     return (
         <>
         {
@@ -39,17 +52,17 @@ const Shop = ({shop, filterCategory, allCategory, addtocart, showNotfc}) => {
                     <div className="left_box">
                         <div className="category">
                             <div className="header">
-                                <h2 onClick={allCategory}>all categories</h2>
+                                <h2 onClick={allCategory}>all {innerWidth>768&&"categories"}</h2>
                             </div>
                             <div className="box">
                                 <ul>
-                                    <li onClick={()=> filterCategory('tv')}><LuTv /> tv</li>
-                                    <li onClick={()=> filterCategory('laptop')}><FaLaptopCode /> laptop</li>
-                                    <li onClick={()=> filterCategory('phone')}><IoIosPhonePortrait/> phone</li>
-                                    <li onClick={()=> filterCategory('watch')}><BsSmartwatch /> watch</li>
-                                    <li onClick={()=> filterCategory('speaker')}><BsSpeaker /> speaker</li>
-                                    <li onClick={()=> filterCategory('headphone')}><FaHeadphonesSimple /> headphone</li>
-                                    <li onClick={()=> filterCategory('electronics')}><MdOutlineElectricBolt /> electronics</li>
+                                    <li onClick={()=> filterCategory('tv')}><LuTv /> {innerWidth>768&&"tv"}</li>
+                                    <li onClick={()=> filterCategory('laptop')}><FaLaptopCode /> {innerWidth>768&&"laptop"}</li>
+                                    <li onClick={()=> filterCategory('phone')}><IoIosPhonePortrait/> {innerWidth>768&&"phone"}</li>
+                                    <li onClick={()=> filterCategory('watch')}><BsSmartwatch /> {innerWidth>768&&"watch"}</li>
+                                    <li onClick={()=> filterCategory('speaker')}><BsSpeaker /> {innerWidth>768&&"speaker"} </li>
+                                    <li onClick={()=> filterCategory('headphone')}><FaHeadphonesSimple /> {innerWidth>768&&"headphone"} </li>
+                                    <li onClick={()=> filterCategory('electronics')}><MdOutlineElectricBolt /> {innerWidth>768&&"electronics"} </li>
                                 </ul>
                             </div>
                         </div>

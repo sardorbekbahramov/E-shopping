@@ -4,7 +4,7 @@
     width: 100%;
 }
 .contact .container {
-    padding: 10xp 20px;
+    padding: 10px 20px;
     max-width: 100%;
 }
 .contact .container h2 {
@@ -78,8 +78,27 @@
 }
 
 
+@media(max-width:580px){
+    .contact{
+        padding: 10px;
+    }
+    .contact .container{
+        padding: 10px;
+    }
+    .contact .container .form {
+        width: 100%;
+        padding: 10px;
+    }
+    .contact .container .form .box .lable h4{
+        margin-left: 10px;
+    }
+}
 
-
+@media(max-width:375px){
+    .contact .container .form .box{
+        flex-direction: column;
+    }
+}
 
 
 
