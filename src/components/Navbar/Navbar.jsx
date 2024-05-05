@@ -71,11 +71,6 @@ const Nav = ({search, setSearch, searchProducts}) => {
                             <div className="icon">
                                 <CiLogout  onClick={() => logout({ logoutParams: { returnTo: window.location.origin } })}/>
                             </div>
-                            {/*  */}
-                            {/* <div className="btn">
-                                <button onClick={() => logout({ logoutParams: { returnTo: window.location.origin } })} >Log out</button>
-                            </div> */}
-                            {/*  */}
                         </div>
                         :
                         // Log in button
