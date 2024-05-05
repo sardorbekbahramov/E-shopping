@@ -86,9 +86,6 @@ const Nav = ({search, setSearch, searchProducts}) => {
                             <div className="icon">
                                 <CiLogin onClick={() => loginWithRedirect()}/>
                             </div>
-                            {/* <div className="btn">
-                                <button onClick={() => loginWithRedirect()} >Log in</button>
-                            </div> */}
                         </div>
                     }
 
